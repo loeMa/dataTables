@@ -1,0 +1,40 @@
+.table{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+td{
+    width: 140px;
+    text-align: center;
+    padding: 0;
+}
+.column{
+    display: flex;
+    flex-direction: row;
+}
+.column__content{
+    width: 140px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.arrow{
+    padding: 0 3px;
+    
+}
+span{
+    font-size: 12px;
+}
+.arrow__top{
+    position: absolute;
+    bottom: 7px;
+}
+.arrow__bottom{
+    position: absolute;
+    top: 10px;
+    
+}
+h4{
+    margin: 0;
+}
