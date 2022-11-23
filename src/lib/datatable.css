@@ -3,6 +3,19 @@ display: flex;
 flex-direction: column;
 align-items: center;
 }
+.dataTable__wrapper{
+    margin: 100px;
+    position: relative;
+}
+.dataTable__header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.dataTable__header div{
+    padding: 15px 62px;
+}
+
 td{
     width: 140px;
     text-align: center;
@@ -23,6 +36,12 @@ td{
     padding: 0 3px;
     
 }
+.arrow--active{
+    color: red;
+}
+.arrow--notactive{
+    color: black;
+}
 span{
     font-size: 12px;
 }
@@ -37,4 +56,12 @@ span{
 }
 h4{
     margin: 0;
+}
+.previousBtn{
+
+}
+
+.nextBtn{
+    position: absolute;
+    right: 0;
 }
