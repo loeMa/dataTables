@@ -1,4 +1,32 @@
-import React, { useContext } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/SortData.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/SortData.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useContext } from 'react';
 import { StoreContext } from '../utils/storeContext';
 import PropTypes from 'prop-types'
 
@@ -6,68 +34,54 @@ import PropTypes from 'prop-types'
 /**
  * component to sort datas by click on columns
  * @param {string} label - value of the table'scolumn selected
- * @returns { HTMLElement }
+ * @returns 
  */
 const SortData = ({label}) => {
 
     const {store} = useContext(StoreContext)
 
-    /**
-     * Function to sort data 
-     * @param {string} column - name of the column
-     * @returns {Object[]} update of the data's list
-     */
     const sortData = column => (e) =>{
 
         let arrowBottom = document.querySelector(`.arrow__bottom.${store.lastSpan[0]}` )
         let arrowTop = document.querySelector(`.arrow__top.${store.lastSpan[0]}` )
     
-        //setLastSpan(column) for the store
         store.lastSpan[1](column)
     
-        //change style for arrows
-        arrowTop != null && 
+        arrowTop != null &amp;&amp; 
             arrowTop.classList.remove('arrow--active') 
-            arrowBottom != null &&
+            arrowBottom != null &amp;&amp;
             arrowBottom.classList.remove('arrow--active')
-            
             
             const sort = () =>{
                 return Object.keys(store.dataArr[0]).sort((a, b) => {
                     const dataColumn = new Date(store.dataArr[0][a][column])
                     if(store.toggleClick[0] === false){
-
-                        // if dataColumn is a Date so sort data
                         if(dataColumn > 0){
+                            
                             e.currentTarget.childNodes[0].classList.add('arrow--active');
                             store.toggleClick[1](true)
                             return  new Date(store.dataArr[0][a][column]) - new Date(store.dataArr[0][b][column]);
-                        
                         }else{
                             let fa = store.dataArr[0][a][column].toLowerCase(),
                             fb = store.dataArr[0][b][column].toLowerCase();
                             store.toggleClick[1](true)
+                            
                             e.currentTarget.childNodes[0].classList.add('arrow--active');
-
-                        return (fa > fb) ? 1 : (fa < fb)? -1 : 0 ; 
-
+                        return (fa > fb) ? 1 : (fa &lt; fb)? -1 : 0 ; 
                         }
                     }else{
-                        // if dataColumn is a Date so sort data
                         if(dataColumn > 0){
+                            
                             e.currentTarget.childNodes[1].classList.add('arrow--active');
                             store.toggleClick[1](false)
                             return  new Date(store.dataArr[0][b][column]) - new Date(store.dataArr[0][a][column]);
-
                         }else{
                             let fa = store.dataArr[0][a][column].toLowerCase(),
                             fb = store.dataArr[0][b][column].toLowerCase();
                             
                             e.currentTarget.childNodes[1].classList.add('arrow--active');
                             store.toggleClick[1](false)
-
-                        return (fa < fb) ? 1 : (fa > fb)? -1 : 0 ; 
-                        
+                        return (fa &lt; fb) ? 1 : (fa > fb)? -1 : 0 ; 
                         }
                     }
                 
@@ -84,10 +98,10 @@ const SortData = ({label}) => {
 
 
     return (
-        <div className='arrow' onClick={sortData(label)} >
-            <span className={'arrow__top '+label}  > &#9650;</span>
-            <span className={'arrow__bottom ' +label}  >  &#9660;</span>
-        </div>
+        &lt;div className='arrow' onClick={sortData(label)} >
+            &lt;span className={'arrow__top '+label}  > &amp;#9650;&lt;/span>
+            &lt;span className={'arrow__bottom ' +label}  >  &amp;#9660;&lt;/span>
+        &lt;/div>
     );
 };
 
@@ -95,4 +109,26 @@ SortData.propTypes = {
     label: PropTypes.string, 
 }
 
-export default SortData;
+export default SortData;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Arrow">Arrow</a></li><li><a href="global.html#DataTable">DataTable</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#SortData">SortData</a></li><li><a href="global.html#StoreProvider">StoreProvider</a></li><li><a href="global.html#TableLength">TableLength</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Nov 23 2022 17:59:59 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

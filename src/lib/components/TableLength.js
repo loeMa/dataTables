@@ -1,7 +1,14 @@
 import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '../utils/storeContext';
+import PropTypes from 'prop-types'
 
+
+/**
+ * 
+ * @param {Object[]} data - table's data
+ * @returns { HTMLElement }
+ */
 const TableLength = ({data}) => {
 
     const {store} = useContext(StoreContext)
@@ -29,5 +36,9 @@ const TableLength = ({data}) => {
         </div>
     );
 };
+
+TableLength.propTypes = {
+    data: PropTypes.array
+}
 
 export default TableLength;

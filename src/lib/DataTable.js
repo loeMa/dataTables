@@ -5,8 +5,20 @@ import SortData from './components/SortData';
 import TableLength from './components/TableLength';
 import './datatable.css';
 import { StoreContext } from './utils/storeContext';
+import PropTypes from 'prop-types'
 
+
+/**
+ * table's labels and data 
+ * @param {Object[]} labels - column title of the table
+ * @param {string} labels.text - the text title of the column
+ * @param {string} labels.value - the value of the column
+ * @param {Object[]} data - all data for rows in the table
+ * @returns { HTMLElement }
+ */
 const DataTable = ({labels, data}) => {
+
+    
     const {store} = useContext(StoreContext)
 /*     const [length, setLength] = useState(10);
     const [indexStart , setIndexStart] = useState(0);
@@ -72,5 +84,10 @@ console.log(store)
         </div>
     );
 };
+
+DataTable.propTypes = {
+    labels: PropTypes.array, 
+    data: PropTypes.array
+}
 
 export default DataTable;

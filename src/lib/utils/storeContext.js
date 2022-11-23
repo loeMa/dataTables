@@ -1,21 +1,24 @@
-import { createContext, useRef, useState } from "react";
+import { createContext, useState } from "react";
 
 
 
 export const StoreContext = createContext()
 
-export const StoreProvider = ({children, labels, data}) => {
+/**
+ * Provider to useContext
+ * @param {*} children 
+ * @param {Object[]} data - all data for the table
+ * @returns {Object[]} to use in all components
+ */
+export const StoreProvider = ({children, data}) => {
     const [length, setLength] = useState(10);
     const [indexStart , setIndexStart] = useState(0);
     const [indexEnd, setIndexEnd] = useState(length);
     const [ count, setCount] = useState(data.length);
-    const limitedArray = useRef(data);
     const [toggleClick, setToggleClick] = useState(false)
     const [lastSpan, setLastSpan] = useState()
-    limitedArray.current =  data.slice(indexStart, indexEnd)
-    
     const [dataArr, setDataArr] = useState(data)
-
+console.log(dataArr, count, length)
     const store = {
         length: [length, setLength],
         indexStart: [indexStart , setIndexStart],
