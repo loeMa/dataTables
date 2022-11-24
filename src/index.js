@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import DataTable from './lib/DataTable';
-import { exampleLabels, exampleData } from "./data/data";
+import { exampleLabels } from "./data/data";
+import exampleData from './data/MOCK_DATA.json'
 import {StoreProvider} from './lib/utils/storeContext';
 
 

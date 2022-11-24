@@ -6,6 +6,7 @@ import TableLength from './components/TableLength';
 import './datatable.css';
 import { StoreContext } from './utils/storeContext';
 import PropTypes from 'prop-types'
+import Pagination from './components/Pagination';
 
 
 /**
@@ -46,12 +47,12 @@ console.log(store)
                 <TableLength data={data}/>
                 <Search labels={labels} data={data}/>
             </div>
-            <table style={{width: 'auto', heigth:'auto', padding: '5px 10px'}} className='table' >
+            <table /* style={{width: 'auto', heigth:'auto', padding: '5px 10px'}} */ className='table' >
                 <thead >
                     <tr className='column' >
                         {labels.map((label, i) =>{
-                            return <th key={i} className='column__content' >
-                                        <h4>{label.text}</h4>
+                            return <th key={i} scope="col" className='column__content' >
+                                        {label.text}
                                         <SortData label={label.value} />
                                     </th>
                         })}
@@ -74,13 +75,17 @@ console.log(store)
                     
                 </tbody>
             </table>
-            { store.count[0] < store.dataArr[0].length && 
-                <Arrow classname={'previous'} onclick={'previousData'} title={'précédent'} />
-            }
-            {store.count[0] > store.length[0] && store.dataArr[0].length > store.length[0] && 
-                <Arrow classname={'nextBtn'} onclick={'nextData'} title={'suivant'} />
-            }
-            
+            <div className='dataTable__footer'>
+                { store.currentPage[0] < store.totalPage[0] &&
+                    <Arrow classname={'nextBtn'} onclick={'nextData'} title={'suivant'} />
+                }
+
+                <Pagination />
+
+                { store.totalPage[0] > 1 && store.currentPage[0] > 1 && 
+                    <Arrow classname={'previous'} onclick={'previousData'} title={'précédent'} />
+                }
+            </div>
         </div>
     );
 };

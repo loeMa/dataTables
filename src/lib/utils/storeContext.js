@@ -14,11 +14,13 @@ export const StoreProvider = ({children, data}) => {
     const [length, setLength] = useState(10);
     const [indexStart , setIndexStart] = useState(0);
     const [indexEnd, setIndexEnd] = useState(length);
-    const [ count, setCount] = useState(data.length);
-    const [toggleClick, setToggleClick] = useState(false)
-    const [lastSpan, setLastSpan] = useState()
-    const [dataArr, setDataArr] = useState(data)
-console.log(dataArr, count, length)
+    const [count, setCount] = useState(data.length);
+    const [toggleClick, setToggleClick] = useState(false);
+    const [lastSpan, setLastSpan] = useState();
+    const [dataArr, setDataArr] = useState(data);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(Math.ceil(dataArr.length / length));
+
     const store = {
         length: [length, setLength],
         indexStart: [indexStart , setIndexStart],
@@ -26,7 +28,9 @@ console.log(dataArr, count, length)
         count: [ count, setCount],
         toggleClick: [toggleClick, setToggleClick],
         lastSpan: [lastSpan, setLastSpan],
-        dataArr: [dataArr, setDataArr]
+        dataArr: [dataArr, setDataArr],
+        currentPage: [currentPage, setCurrentPage],
+        totalPage: [totalPage, setTotalPage]
     }
 
     return <StoreContext.Provider value={{store}}>{children}</StoreContext.Provider>

@@ -18,23 +18,23 @@ const Arrow = ({classname, onclick, title}) => {
     const nextData = () =>{
         store.indexEnd[1](store.indexEnd[0] + store.length[0]);
         store.indexStart[1](store.indexStart[0] + store.length[0]);
-        store.count[1](store.count[0] - store.length[0])
-        //store.dataArr[1](store.dataArr[0])
-        console.log(store.count[0], store.length[0])
+        store.count[1](store.count[0] - store.length[0]);
+        store.currentPage[1](store.currentPage[0] + 1)
+
     }
     const previousData= () =>{
         store.indexEnd[1](store.indexEnd[0] - store.length[0]);
         store.indexStart[1](store.indexStart[0] - store.length[0]);
         store.count[1](store.count[0] + store.length[0]);
-        //store.dataArr[1](store.dataArr[0])
-        console.log(store.count[0])
+        store.currentPage[1](store.currentPage[0] - 1)
+
     }
 
     return (
         <div>
             {onclick === nextData.name?
             <button className={classname} onClick={nextData}>{title}</button> 
-             :
+            :
             <button className={classname} onClick={previousData}>{title}</button> 
             }  
         </div>
