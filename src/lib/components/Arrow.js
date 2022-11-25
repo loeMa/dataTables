@@ -31,11 +31,11 @@ const Arrow = ({classname, onclick, title}) => {
     }
 
     return (
-        <div>
+        <div className={classname}>
             {onclick === nextData.name?
-            <button className={classname} onClick={nextData}>{title}</button> 
+            <button  onClick={nextData}>{title}</button> 
             :
-            <button className={classname} onClick={previousData}>{title}</button> 
+            <button  onClick={previousData}>{title}</button> 
             }  
         </div>
         

@@ -7,6 +7,9 @@ import './datatable.css';
 import { StoreContext } from './utils/storeContext';
 import PropTypes from 'prop-types'
 import Pagination from './components/Pagination';
+import { useState } from 'react';
+import Column from './components/Column';
+import Row from './components/Row';
 
 
 /**
@@ -19,6 +22,7 @@ import Pagination from './components/Pagination';
  */
 const DataTable = ({labels, data}) => {
 
+    const [english, setEnglish] = useState(false);
     
     const {store} = useContext(StoreContext)
 /*     const [length, setLength] = useState(10);
@@ -44,17 +48,14 @@ console.log(store)
     return (
         <div className='dataTable__wrapper'>
             <div className='dataTable__header'>
-                <TableLength data={data}/>
-                <Search labels={labels} data={data}/>
+                <TableLength data={data} language={english} />
+                <Search labels={labels} data={data} language={english} />
             </div>
             <table /* style={{width: 'auto', heigth:'auto', padding: '5px 10px'}} */ className='table' >
                 <thead >
                     <tr className='column' >
                         {labels.map((label, i) =>{
-                            return <th key={i} scope="col" className='column__content' >
-                                        {label.text}
-                                        <SortData label={label.value} />
-                                    </th>
+                            return <Column key={i} label={label} />
                         })}
                     </tr>
                 </thead>
@@ -62,11 +63,8 @@ console.log(store)
                     
                         {store.dataArr[0].length > 0 ?
                         Object.values( store.dataArr[0].slice(store.indexStart[0], store.indexEnd[0])).map((obj, index) =>{
-                            return <tr key={index}>
-                                {Object.values(obj).map((value, index2) =>{
-                                    return <td key={index2} >{value}</td>
-                                })}
-                            </tr>
+                            return <Row key={index} obj={obj} />
+                            
                         }) :
                         <tr>
                             <td>Aucune donnée de disponible </td>
@@ -76,14 +74,16 @@ console.log(store)
                 </tbody>
             </table>
             <div className='dataTable__footer'>
-                { store.currentPage[0] < store.totalPage[0] &&
-                    <Arrow classname={'nextBtn'} onclick={'nextData'} title={'suivant'} />
+                { store.totalPage[0] > 1 && store.currentPage[0] > 1 ?
+                    <Arrow classname={'previous'} onclick={'previousData'} title={english? "Previous" : "Précédent "} />
+                    :
+                    <div></div>
                 }
 
                 <Pagination />
 
-                { store.totalPage[0] > 1 && store.currentPage[0] > 1 && 
-                    <Arrow classname={'previous'} onclick={'previousData'} title={'précédent'} />
+                { store.currentPage[0] < store.totalPage[0] &&
+                    <Arrow classname={'nextBtn'} onclick={'nextData'} title={english? "Next" : "Suivant " }  />
                 }
             </div>
         </div>

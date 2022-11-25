@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 /**
  * component to sort datas by click on columns
- * @param {string} label - value of the table'scolumn selected
+ * @param {Object[]} label - value of the table'scolumn selected
  * @returns { HTMLElement }
  */
 const SortData = ({label}) => {
@@ -18,7 +18,7 @@ const SortData = ({label}) => {
      * @returns {Object[]} update of the data's list
      */
     const sortData = column => (e) =>{
-
+console.log(e.currentTarget)
         let arrowBottom = document.querySelector(`.arrow__bottom.${store.lastSpan[0]}` )
         let arrowTop = document.querySelector(`.arrow__top.${store.lastSpan[0]}` )
     
@@ -39,7 +39,7 @@ const SortData = ({label}) => {
 
                         // if dataColumn is a Date so sort data
                         if(dataColumn > 0){
-                            e.currentTarget.childNodes[0].classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].firstChild.classList.add('arrow--active');
                             store.toggleClick[1](true)
                             return  new Date(store.dataArr[0][a][column]) - new Date(store.dataArr[0][b][column]);
                         
@@ -47,7 +47,7 @@ const SortData = ({label}) => {
                             let fa = store.dataArr[0][a][column].toLowerCase(),
                             fb = store.dataArr[0][b][column].toLowerCase();
                             store.toggleClick[1](true)
-                            e.currentTarget.childNodes[0].classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].firstChild.classList.add('arrow--active');
 
                         return (fa > fb) ? 1 : (fa < fb)? -1 : 0 ; 
 
@@ -55,7 +55,7 @@ const SortData = ({label}) => {
                     }else{
                         // if dataColumn is a Date so sort data
                         if(dataColumn > 0){
-                            e.currentTarget.childNodes[1].classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].lastChild.classList.add('arrow--active');
                             store.toggleClick[1](false)
                             return  new Date(store.dataArr[0][b][column]) - new Date(store.dataArr[0][a][column]);
 
@@ -63,7 +63,7 @@ const SortData = ({label}) => {
                             let fa = store.dataArr[0][a][column].toLowerCase(),
                             fb = store.dataArr[0][b][column].toLowerCase();
                             
-                            e.currentTarget.childNodes[1].classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].lastChild.classList.add('arrow--active');
                             store.toggleClick[1](false)
 
                         return (fa < fb) ? 1 : (fa > fb)? -1 : 0 ; 
@@ -84,15 +84,19 @@ const SortData = ({label}) => {
 
 
     return (
-        <div className='arrow' onClick={sortData(label)} >
-            <span className={'arrow__top '+label}  > &#9650;</span>
-            <span className={'arrow__bottom ' +label}  >  &#9660;</span>
+        <div className='arrow' onClick={sortData(label.value)} >
+            <h4>{label.text}</h4>
+            <div className='arrow__wrap'>
+                <span className={'arrow__top '+label.value}  > &#9650;</span>
+                <span className={'arrow__bottom ' +label.value}  >  &#9660;</span>
+            </div>
+            
         </div>
     );
 };
 
 SortData.propTypes = {
-    label: PropTypes.string, 
+    label: PropTypes.object, 
 }
 
 export default SortData;

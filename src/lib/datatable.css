@@ -3,26 +3,70 @@ table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    border: 3px solid purple;
+    
+}
+table tr:nth-child(even){
+    background-color: #f2f2f2;
 }
 th,
 td {
-    padding: 20px;
+    padding: 10px;
+    text-align: center;
 }
-
-
-/* .column{
+.column{
+    background-color: rgb(94, 93, 92);
+    color: white;
+}
+.dataTable__wrapper{
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+    
+}
+.dataTable__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 0;
+}
+.dataTable__footer{
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    padding: 2% 0;
+}
+.pagination button, .pagination span{
+    width: 43px;
+    height: 35px;
+    margin: 0 3px;
+    /* display: inline-block; */
+}
+.previous button, .nextBtn button{
+    height: 35px;
+    width: 75px;
+    border: none;
+}
+.pagination{
+    text-align: center;
+}
+.nextBtn{
+    text-align: end;
+}
+.arrow{
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: nowrap;
-} */
-/* .column__content{
+    justify-content: center;
+    column-gap: 5px;
+}
+.arrow__wrap{
     display: flex;
-    
-    align-items: center;
+    flex-direction: column;
+    font-size: 12px;
+    color: #75797a;
+}
+.arrow--active{
+    color: white;
+}
 
-} */
 /* .table{
 display: flex;
 flex-direction: column;

@@ -7,9 +7,10 @@ import PropTypes from 'prop-types'
 /**
  * 
  * @param {Object[]} data - table's data
+ * @param {boolean} language - to set the language
  * @returns { HTMLElement }
  */
-const TableLength = ({data}) => {
+const TableLength = ({data, language}) => {
 
     const {store} = useContext(StoreContext)
 
@@ -24,21 +25,23 @@ const TableLength = ({data}) => {
     
     return (
         <div>
-            <label htmlFor="tableLength">Show 
+            
+            <label htmlFor="tableLength">{language? "Show " : "Afficher " }
                 <select name='tableLength' onChange={handleChange}>
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
                     </select>
-                entries
+                    {language? " entries" : " entrées" }
             </label>
         </div>
     );
 };
 
 TableLength.propTypes = {
-    data: PropTypes.array
+    data: PropTypes.array,
+    language: PropTypes.bool
 }
 
 export default TableLength;

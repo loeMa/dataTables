@@ -13,6 +13,7 @@ const Pagination = () => {
     const previousSibling = current -1;
 
 
+        //create array with integer until page number
         for(let i = 0 ; i < page; i++){
             numberArray.push(countIterate);
             countIterate ++;
@@ -27,6 +28,7 @@ const Pagination = () => {
             store.currentPage[1](e.target.value)
         }
         
+        //create a new array to show only few number's page -> shorter the pagination
         if(numberArray.length >= 5){
 
             if(start === numberArray[current]){
@@ -60,8 +62,11 @@ const Pagination = () => {
                 
                 if(input === "..."){
                     return <span key={index}>...</span>
-                }else{
-                    return <button key={index} value={input} onClick={changePage} >{input}</button>
+                }else if(input === current +1){
+                    return <button key={index} style={{backgroundColor: '#5e5d5c', border: 'none', color: 'white' }} value={input} onClick={changePage} >{input}</button>
+                }
+                else{
+                    return <button key={index} style={{ border: 'none', }} value={input} onClick={changePage} >{input}</button>
                 }
                 
             })
