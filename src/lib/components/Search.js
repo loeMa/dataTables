@@ -45,9 +45,13 @@ const Search = ({labels, data, language}) => {
         
         store.dataArr[1](newArray) 
         store.count[1](newArray.length)
-        
+        store.currentPage[1](1);
+        store.indexStart[1](0);
+        store.indexEnd[1](store.length[0])
+        store.totalPage[1](Math.ceil(newArray.length / store.length[0]))
+        console.log(store.dataArr[0], store.totalPage[0], store.indexStart[0],store.indexEnd[0], store.length[0] )
     }
-
+    console.log(store.dataArr[0].length, store.totalPage[0], store.length[0])
 
     return (
         <div>

@@ -21,7 +21,7 @@ const Pagination = () => {
 
     const start = numberArray[0];
     const last = numberArray.length;
-
+//console.log(numberArray)
         const changePage = (e) =>{
             store.indexEnd[1](store.length[0] * e.target.value);
             store.indexStart[1]((store.length[0] * e.target.value) - store.length[0])
@@ -49,17 +49,21 @@ const Pagination = () => {
             else if(numberArray[nextSibling + 1] === last){
                 resultArray.push(start,'...', numberArray[previousSibling], numberArray[current], numberArray[nextSibling], last)
             }
-            else{
+            else if(numberArray[current] <= last - 3 || numberArray[current] >= start + 3){
                 resultArray.push(start,'...', numberArray[previousSibling], numberArray[current], numberArray[nextSibling],"...", last)
+            }
+            else{
+                resultArray = numberArray;
             } 
         }
-
-
+        
+        
     return (
         <div className='pagination'>
-            {numberArray.length > 4 }
-            {resultArray.map((input, index) =>{
-                
+        
+        { 
+            resultArray.map((input, index) =>{
+                    
                 if(input === "..."){
                     return <span key={index}>...</span>
                 }else if(input === current +1){
@@ -70,8 +74,8 @@ const Pagination = () => {
                 }
                 
             })
-
-            }
+        }
+        
         </div>
     );
 };

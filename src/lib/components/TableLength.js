@@ -16,10 +16,11 @@ const TableLength = ({data, language}) => {
 
     const handleChange = ( e) =>{
         
-        store.length[1](Number(e.target.value))
-        store.indexEnd[1](Number(e.target.value))
-        store.indexStart[1](0)
-        store.count[1](data.length)
+        store.length[1](Number(e.target.value));
+        store.indexEnd[1](Number(e.target.value));
+        store.indexStart[1](0);
+        store.count[1](data.length);
+        store.currentPage[1](1);
         //store.dataArr[1](store.dataArr)
         } 
     

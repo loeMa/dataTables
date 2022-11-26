@@ -5,6 +5,9 @@ table {
     border-collapse: collapse;
     
 }
+h4{
+    margin: 0;
+}
 table tr:nth-child(even){
     background-color: #f2f2f2;
 }
@@ -56,6 +59,7 @@ td {
     align-items: center;
     justify-content: center;
     column-gap: 5px;
+    cursor: pointer;
 }
 .arrow__wrap{
     display: flex;
@@ -67,6 +71,61 @@ td {
     color: white;
 }
 
+
+@media (max-width: 1024px) {
+    .dataTable__wrapper{
+        width: 90%;
+    }
+
+    .arrow{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .arrow__wrap{
+        flex-direction: row;
+    }
+    th, td {
+        padding: 5px;
+        font-size: 14px;
+      }
+}
+@media only screen and  (max-width: 760px) {
+    td, tr { display: block; }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr { 
+        border: 1px solid #75797a; 
+        margin-top: 7%;
+    } 
+    tr + tr { margin-top: 1.5em; }
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        background-color: white;
+        text-align: left;
+    }
+    td:before {
+        content: attr(data-label);
+        display: inline-block;
+        line-height: 1.5;
+        margin-left: -100%;
+        width: 100%;
+        white-space: nowrap;
+        font-weight: 600;
+    }
+    .dataTable__header{
+        flex-direction: column;
+    }
+    .dataTable__header div{
+        padding: 2% 0;
+    }
+    }
 /* .table{
 display: flex;
 flex-direction: column;
