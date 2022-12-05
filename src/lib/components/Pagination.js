@@ -1,7 +1,13 @@
 import React, { useContext } from 'react';
 import { StoreContext } from '../utils/storeContext';
+import PropTypes from 'prop-types';
 
-const Pagination = () => {
+/**
+ * Component for the table's pagination 
+ * @param {boolean} english - to set the language 
+ * @returns { HTMLElement }
+ */
+const Pagination = ({language, firstBackground, secondBackground, color}) => {
 
     const {store} = useContext(StoreContext)
     const page = store.totalPage[0];
@@ -21,12 +27,14 @@ const Pagination = () => {
 
     const start = numberArray[0];
     const last = numberArray.length;
-//console.log(numberArray)
+
         const changePage = (e) =>{
             store.indexEnd[1](store.length[0] * e.target.value);
             store.indexStart[1]((store.length[0] * e.target.value) - store.length[0])
             store.currentPage[1](e.target.value)
         }
+
+        
         
         //create a new array to show only few number's page -> shorter the pagination
         if(numberArray.length >= 5){
@@ -60,6 +68,7 @@ const Pagination = () => {
         
     return (
         <div className='pagination'>
+            <div>
         
         { 
             resultArray.map((input, index) =>{
@@ -67,17 +76,33 @@ const Pagination = () => {
                 if(input === "..."){
                     return <span key={index}>...</span>
                 }else if(input === current +1){
-                    return <button key={index} style={{backgroundColor: '#5e5d5c', border: 'none', color: 'white' }} value={input} onClick={changePage} >{input}</button>
+                    return <button key={index} style={{backgroundColor: firstBackground, border: 'none', color: color }} value={input} onClick={changePage} >{input}</button>
                 }
                 else{
-                    return <button key={index} style={{ border: 'none', }} value={input} onClick={changePage} >{input}</button>
+                    return <button key={index} style={{backgroundColor: secondBackground ,border: 'none', }} value={input} onClick={changePage} >{input}</button>
                 }
                 
             })
+            
         }
-        
+        </div>
+        <div className='pagination__direct'>
+        <label htmlFor='pageNumber'>{language? "Go directly to page :" : "Aller directement à la page:"}  </label>
+        <select id='pageNumber' name='pageNumber' onChange={changePage}>
+        {
+            numberArray.map((input, i) =>{
+                
+                return <option key={i}  value={input}>{input}</option>
+            })
+        }
+        </select>
+        </div>
         </div>
     );
 };
+
+Pagination.propTypes = {
+    language: PropTypes.bool
+}
 
 export default Pagination;

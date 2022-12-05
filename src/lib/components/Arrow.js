@@ -14,7 +14,7 @@ const Arrow = ({classname, onclick, title}) => {
 
     const {store} = useContext(StoreContext);
 
-    //update 
+    //update index, count and current page when click on next button
     const nextData = () =>{
         store.indexEnd[1](store.indexEnd[0] + store.length[0]);
         store.indexStart[1](store.indexStart[0] + store.length[0]);
@@ -22,6 +22,7 @@ const Arrow = ({classname, onclick, title}) => {
         store.currentPage[1](store.currentPage[0] + 1)
 
     }
+    //update index, count and current page when click on previous button
     const previousData= () =>{
         store.indexEnd[1](store.indexEnd[0] - store.length[0]);
         store.indexStart[1](store.indexStart[0] - store.length[0]);

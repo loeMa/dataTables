@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 
 /**
- * 
+ * Component to select the number of entries to show
  * @param {Object[]} data - table's data
  * @param {boolean} language - to set the language
  * @returns { HTMLElement }
@@ -14,14 +14,13 @@ const TableLength = ({data, language}) => {
 
     const {store} = useContext(StoreContext)
 
+    //function to update index, length, count and current page
     const handleChange = ( e) =>{
-        
         store.length[1](Number(e.target.value));
         store.indexEnd[1](Number(e.target.value));
         store.indexStart[1](0);
         store.count[1](data.length);
         store.currentPage[1](1);
-        //store.dataArr[1](store.dataArr)
         } 
     
     return (

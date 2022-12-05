@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StoreContext } from '../utils/storeContext';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 //@ts-check
 /**
@@ -51,7 +51,7 @@ const Search = ({labels, data, language}) => {
         store.totalPage[1](Math.ceil(newArray.length / store.length[0]))
         console.log(store.dataArr[0], store.totalPage[0], store.indexStart[0],store.indexEnd[0], store.length[0] )
     }
-    console.log(store.dataArr[0].length, store.totalPage[0], store.length[0])
+    
 
     return (
         <div>

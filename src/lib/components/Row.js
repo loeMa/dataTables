@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 /**
- * 
+ * Rows in the Table
  * @param {Object} obj - data for row
  * @returns { HTMLElement }
  */
