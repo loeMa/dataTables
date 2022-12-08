@@ -10,18 +10,22 @@ import PropTypes from 'prop-types';
  * @param {Object[]} labels - column title of the table
  * @param {string} labels.text - the text title of the column
  * @param {string} labels.value - the value of the column
+ * @param {string} firstBackground - the color of the first background
+ * @param {string} secondBackground - the color of the second color
+ * @param {string} color - the color of the font
+ * @param {string} arrowColor - the color of arrows of sorting data
  * @returns { HTMLElement }
  */
-const Table = ({labels, firstBackground, color}) => {
+const Table = ({labels, firstBackground, secondBackground, color, arrowColor}) => {
 
     const {store} = useContext(StoreContext)
 
     return (
-        <table /* style={{width: 'auto', heigth:'auto', padding: '5px 10px'}} */ className='table' >
+        <table className='table' >
             <thead >
                 <tr className='column' >
                     {labels.map((label, i) =>{
-                        return <Column key={i} label={label} firstBackground={firstBackground} color={color} />
+                        return <Column key={i} label={label} firstBackground={firstBackground} secondBackground={secondBackground} color={color} arrowColor={arrowColor} />
                     })}
                 </tr>
             </thead>
@@ -29,7 +33,7 @@ const Table = ({labels, firstBackground, color}) => {
                 
                     {store.dataArr[0].length > 0 ?
                     Object.values( store.dataArr[0].slice(store.indexStart[0], store.indexEnd[0])).map((obj, index) =>{
-                        return <Row key={index} obj={obj} />
+                        return <Row key={index} obj={obj} index={index} secondBackground={secondBackground} />
                         
                     }) :
                     <tr>
@@ -44,6 +48,11 @@ const Table = ({labels, firstBackground, color}) => {
 
 Table.propTypes = {
     labels: PropTypes.array, 
+    firstBackground: PropTypes.string,
+    secondBackground: PropTypes.string,
+    color: PropTypes.string,
+    arrowColor: PropTypes.string,
+
 }
 
 export default Table;

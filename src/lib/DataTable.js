@@ -13,12 +13,16 @@ import Table from './components/Table';
  * @param {Object[]} labels - column title of the table
  * @param {string} labels.text - the text title of the column
  * @param {string} labels.value - the value of the column
+ * @param {boolean} language -to set in french(false) or english(true)
  * @param {Object[]} data - all data for rows in the table
+ * @param {string} firstBackground - the color of the first background
+ * @param {string} secondBackground - the color of the second color
+ * @param {string} color - the color of the font
+ * @param {string} arrowColor - the color of arrows of sorting data
  * @returns { HTMLElement }
  */
-const DataTable = ({labels, data, firstBackground, secondBackground, color, arrowColor}) => {
+const DataTable = ({labels, language, data, firstBackground, secondBackground, color, arrowColor}) => {
 
-    const [english, setEnglish] = useState(false);
     
     const {store} = useContext(StoreContext)
 
@@ -26,21 +30,30 @@ const DataTable = ({labels, data, firstBackground, secondBackground, color, arro
     const defaultBackgroundSecond = '#e9e9ed';
     const defaultColor = 'white';
     const defaultArrowColor = '#75797a';
-    const defaultArrowColorActive = 'white';
- 
+    
 
     return (
         <div className='dataTable__wrapper'>
-            <Header labels={labels} data={data} english={english} />
-            <Table labels={labels} firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} color={color? color : defaultColor} />
-            <Footer language={english} firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} secondBackground={secondBackground? secondBackground : defaultBackgroundSecond} color={color? color : defaultColor} />
+            <Header labels={labels} data={data} language={language? false : language} />
+            <Table labels={labels} 
+            firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} 
+            color={color? color : defaultColor} 
+            secondBackground={secondBackground? secondBackground : defaultBackgroundSecond}
+            arrowColor={arrowColor? arrowColor : defaultArrowColor} 
+            />
+            <Footer language={language? false : language} firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} secondBackground={secondBackground? secondBackground : defaultBackgroundSecond} color={color? color : defaultColor} />
         </div>
     );
 };
 
 DataTable.propTypes = {
     labels: PropTypes.array, 
-    data: PropTypes.array
+    data: PropTypes.array,
+    language: PropTypes.bool,
+    firstBackground: PropTypes.string,
+    secondBackground: PropTypes.string,
+    color: PropTypes.string,
+    arrowColor: PropTypes.string,
 }
 
 export default DataTable;

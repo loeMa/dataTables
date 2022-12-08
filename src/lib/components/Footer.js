@@ -9,6 +9,9 @@ import PropTypes from 'prop-types';
  * Footer of the Table
  * @param {boolean} english - to set the language 
  * @param {string} footer - className of the footer
+ * @param {string} firstBackground - the color of the first background
+ * @param {string} secondBackground - the color of the second color
+ * @param {string} color - the color of the font
  * @returns { HTMLElement }
  */
 const Footer = ({language, footer, firstBackground, secondBackground, color}) => {
@@ -41,7 +44,10 @@ const Footer = ({language, footer, firstBackground, secondBackground, color}) =>
 
 Footer.propTypes = {
     language: PropTypes.bool,
-    footer: PropTypes.string
+    footer: PropTypes.string,
+    firstBackground: PropTypes.string,
+    color: PropTypes.string,
+    secondBackground: PropTypes.string,
 }
 
 export default Footer;

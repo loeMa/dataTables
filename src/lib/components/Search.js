@@ -9,10 +9,11 @@ import PropTypes from 'prop-types';
  * @param {string} labels.text - the text title of the column
  * @param {string} labels.value - the value of the column
  * @param {Object[]}  data - all data for rows in the table
+ * @param {string} search - className of this search session
  * @param {boolean} language - to set the language
  * @returns { HTMLElement }
  */
-const Search = ({labels, data, language}) => {
+const Search = ({labels, data, language, search}) => {
     const {store} = useContext(StoreContext)
 
 
@@ -54,7 +55,7 @@ const Search = ({labels, data, language}) => {
     
 
     return (
-        <div>
+        <div className={search} >
             <label htmlFor="search"></label>
             {language? "Search: " : "Chercher " } 
             <input type="search" id="search" aria-label="search" onChange={searchData} />
@@ -65,7 +66,8 @@ const Search = ({labels, data, language}) => {
 Search.propTypes = {
     labels: PropTypes.array, 
     data: PropTypes.array,
-    language: PropTypes.bool
+    language: PropTypes.bool,
+    search: PropTypes.string,
 }
 
 export default Search;

@@ -6,11 +6,18 @@ import PropTypes from 'prop-types'
 /**
  * component to sort datas by click on columns
  * @param {Object[]} label - value of the table'scolumn selected
+ * @param {string} arrow - className of the arrow
+ * @param {string} color - the color of the font
+ * @param {string} arrowColor - the color of arrows of sorting data
  * @returns { HTMLElement }
  */
-const SortData = ({label}) => {
+const SortData = ({label, arrow, color, arrowColor}) => {
 
     const {store} = useContext(StoreContext)
+    const styleArrow = {
+        color : arrowColor,
+        filter: 'brightness(150%)'
+    }
 
     /**
      * Function to sort data 
@@ -18,19 +25,19 @@ const SortData = ({label}) => {
      * @returns {Object[]} update of the data's list
      */
     const sortData = column => (e) =>{
-console.log(e.currentTarget)
         let arrowBottom = document.querySelector(`.arrow__bottom.${store.lastSpan[0]}` )
         let arrowTop = document.querySelector(`.arrow__top.${store.lastSpan[0]}` )
     
         //setLastSpan(column) for the store
         store.lastSpan[1](column)
-    
+
         //change style for arrows
-        arrowTop != null && 
-            arrowTop.classList.remove('arrow--active') 
-            arrowBottom != null &&
-            arrowBottom.classList.remove('arrow--active')
-            
+        if(arrowTop != null){
+        arrowTop.style.color = arrowColor;
+        }
+        if(arrowBottom != null){
+        arrowBottom.style.color = arrowColor;
+        }
             
             const sort = () =>{
                 return Object.keys(store.dataArr[0]).sort((a, b) => {
@@ -39,7 +46,7 @@ console.log(e.currentTarget)
 
                         // if dataColumn is a Date so sort data
                         if(dataColumn > 0){
-                            e.currentTarget.childNodes[1].firstChild.classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].firstChild.style.color = color;
                             store.toggleClick[1](true)
                             return  new Date(store.dataArr[0][a][column]) - new Date(store.dataArr[0][b][column]);
                         
@@ -47,7 +54,7 @@ console.log(e.currentTarget)
                             let fa = store.dataArr[0][a][column].toLowerCase(),
                             fb = store.dataArr[0][b][column].toLowerCase();
                             store.toggleClick[1](true)
-                            e.currentTarget.childNodes[1].firstChild.classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].firstChild.style.color = color;
 
                         return (fa > fb) ? 1 : (fa < fb)? -1 : 0 ; 
 
@@ -55,7 +62,7 @@ console.log(e.currentTarget)
                     }else{
                         // if dataColumn is a Date so sort data
                         if(dataColumn > 0){
-                            e.currentTarget.childNodes[1].lastChild.classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].lastChild.style.color = color;
                             store.toggleClick[1](false)
                             return  new Date(store.dataArr[0][b][column]) - new Date(store.dataArr[0][a][column]);
 
@@ -63,7 +70,7 @@ console.log(e.currentTarget)
                             let fa = store.dataArr[0][a][column].toLowerCase(),
                             fb = store.dataArr[0][b][column].toLowerCase();
                             
-                            e.currentTarget.childNodes[1].lastChild.classList.add('arrow--active');
+                            e.currentTarget.childNodes[1].lastChild.style.color = color;
                             store.toggleClick[1](false)
 
                         return (fa < fb) ? 1 : (fa > fb)? -1 : 0 ; 
@@ -84,11 +91,11 @@ console.log(e.currentTarget)
 
 
     return (
-        <div className='arrow' onClick={sortData(label.value)} >
+        <div className={`arrow ${arrow}`} onClick={sortData(label.value)} >
             <h4>{label.text}</h4>
-            <div className='arrow__wrap'>
-                <span className={'arrow__top '+label.value}  > &#9650;</span>
-                <span className={'arrow__bottom ' +label.value}  >  &#9660;</span>
+            <div className='arrow__wrap' >
+                <span className={'arrow__top '+label.value} style={styleArrow} > &#9650;</span>
+                <span className={'arrow__bottom ' +label.value} style={styleArrow} >  &#9660;</span>
             </div>
             
         </div>
@@ -97,6 +104,9 @@ console.log(e.currentTarget)
 
 SortData.propTypes = {
     label: PropTypes.object, 
+    color: PropTypes.string,
+    arrowColor: PropTypes.string,
+    arrow: PropTypes.string,
 }
 
 export default SortData;
