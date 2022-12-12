@@ -23,7 +23,6 @@ import Table from './components/Table';
  */
 const DataTable = ({labels, language, data, firstBackground, secondBackground, color, arrowColor}) => {
 
-    
     const {store} = useContext(StoreContext)
 
     const defaultBackgroundfirst = '#5e5d5c';
@@ -34,14 +33,14 @@ const DataTable = ({labels, language, data, firstBackground, secondBackground, c
 
     return (
         <div className='dataTable__wrapper'>
-            <Header labels={labels} data={data} language={language? false : language} />
+            <Header labels={labels} data={data} language={language? language : false} />
             <Table labels={labels} 
             firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} 
             color={color? color : defaultColor} 
             secondBackground={secondBackground? secondBackground : defaultBackgroundSecond}
             arrowColor={arrowColor? arrowColor : defaultArrowColor} 
             />
-            <Footer language={language? false : language} firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} secondBackground={secondBackground? secondBackground : defaultBackgroundSecond} color={color? color : defaultColor} />
+            <Footer language={language? language : false} firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} secondBackground={secondBackground? secondBackground : defaultBackgroundSecond} color={color? color : defaultColor} />
         </div>
     );
 };

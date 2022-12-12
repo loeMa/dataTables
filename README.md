@@ -87,20 +87,30 @@ const labels = [
 ```
 ### Custom 
 
+
+| Property         | Type    | Required | Default   | Description                                           |
+| :--------------- | :------ | :------- | :-------- | :---------------------------------------------------- |
+| labels           | array   | true     | []        | Names of columns                                      |
+| data             | array   | true     | []        | Data in rows                                          |
+| language         | boolean | false    | false     | false = french, true = english                        |
+| firstBackground  | string  | false    | '#5e5d5c' | Background color of columns and active page           |
+| secondBackground | string  | false    | '#e9e9ed' | Background color of certains rows and page not active |
+| color            | string  | false    | 'white'   | Column font color                                     |
+| arrowColor       | string  | false    | '#75797a' | Arrow's color to sort data                            |
+
+#### Exemple custom
+
 ```
-
-| Propety         |  Type  | Required | Default  | Description                                                 |
-|:----------------|:------:|:---- ---:|:--------:|------------------------------------------------------------:|
-| labels          | array  |   true   | []       | Names of columns                                            |
-| data            |  array |   true   | []       | Data in rows                                                |
-| language        |boolean |   false  | false    | false = french, true = english                              |
-| firstBackground |  string|   false  | '#5e5d5c'| Background color of columns and active page                 |
-| secondBackground|  string|   false  | '#e9e9ed'| Background color of certains rows and page not active       |
-| color           |  string|   false  | 'white'  | Column font color                                           |
-| arrowColor      |  string|   false  | '#75797a'| Arrow's color to sort data                                  |
-
-
+<DataTable 
+labels={labels} 
+data={data} 
+language={true}
+firstBackground={"#038C3E"}
+secondBackground={"#DEF4E0"}
+arrowColor={"#022601"}
+/>
 ```
+![Image](../data-table/public/data-tableCustom.png)
 
 
 ## License

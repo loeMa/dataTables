@@ -16,7 +16,6 @@ import PropTypes from 'prop-types';
  */
 const Header = ({labels, data, language, header}) => {
 
-
     return (
         <div className={`dataTable__header ${header}`}>
             <TableLength data={data} language={language} />

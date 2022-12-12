@@ -11,7 +11,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <StoreProvider labels={exampleLabels} data={exampleData}>
-      <DataTable labels={exampleLabels} data={exampleData}/>
+      <DataTable labels={exampleLabels} data={exampleData} language={true}
+firstBackground={"#038C3E"}
+secondBackground={"#DEF4E0"}
+arrowColor={"#022601"}/>
     </StoreProvider>
   </React.StrictMode>
 );
