@@ -16,17 +16,17 @@ Datable is a ReactJS library to create a custom and sortable data table. This is
 ## Installation
 
 ```bash
-npm install datable
+npm i datable-react
 ```
 
 ## Usage
 
 ### General
 ```reactJS
-import datable from 'datable';
-import Header from 'datable';
-import Table from 'datable';
-import Footer from 'datable';
+import datable from 'datable-react';
+import Header from 'datable-react';
+import Table from 'datable-react';
+import Footer from 'datable-react';
 
 
 //to use all the table - Header, table, footer 
