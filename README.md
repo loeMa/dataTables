@@ -2,6 +2,7 @@
 
 Datable is a ReactJS library to create a custom and sortable data table. This is the V1 of this project. 
 
+<img src="./datable.png" alt="datable">
 ## Features
 
    - Searching a direct data
@@ -89,7 +90,7 @@ const labels = [
 
 | Propety         |  Type  | Required | Default  | Description                                                 |
 |:----------------|:------:|:---- ---:|:--------:|------------------------------------------------------------:|
-| labels          | array  | true     | []       | Names of columns                                            |
+| labels          | array  |   true   | []       | Names of columns                                            |
 | data            |  array |   true   | []       | Data in rows                                                |
 | language        |boolean |   false  | false    | false = french, true = english                              |
 | firstBackground |  string|   false  | '#5e5d5c'| Background color of columns and active page                 |
