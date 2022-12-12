@@ -110,7 +110,7 @@ secondBackground={"#DEF4E0"}
 arrowColor={"#022601"}
 />
 ```
-![Image](../data-table/public/data-tableCustom.png)
+![Image](./public/data-tableCustom.png)
 
 
 ## License
