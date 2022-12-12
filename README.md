@@ -23,7 +23,7 @@ npm i datable-react
 
 ### General
 ```reactJS
-import datable from 'datable-react';
+import DataTable from 'datable-react';
 import Header from 'datable-react';
 import Table from 'datable-react';
 import Footer from 'datable-react';
