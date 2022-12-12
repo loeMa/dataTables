@@ -55,7 +55,7 @@ const Search = ({labels, data, language, customSearch}) => {
     
 
     return (
-        <div sstyle={customSearch} >
+        <div style={customSearch} >
             <label htmlFor="search"></label>
             {language? "Search: " : "Chercher " } 
             <input type="search" id="search" aria-label="search" onChange={searchData} />

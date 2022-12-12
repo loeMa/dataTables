@@ -88,15 +88,24 @@ const labels = [
 ### Custom 
 
 
-| Property         | Type    | Required | Default   | Description                                           |
-| :--------------- | :------ | :------- | :-------- | :---------------------------------------------------- |
-| labels           | array   | true     | []        | Names of columns                                      |
-| data             | array   | true     | []        | Data in rows                                          |
-| language         | boolean | false    | false     | false = french, true = english                        |
-| firstBackground  | string  | false    | '#5e5d5c' | Background color of columns and active page           |
-| secondBackground | string  | false    | '#e9e9ed' | Background color of certains rows and page not active |
-| color            | string  | false    | 'white'   | Column font color                                     |
-| arrowColor       | string  | false    | '#75797a' | Arrow's color to sort data                            |
+| Property         | Type    | Required | Default                 | Description                                           |
+| :--------------- | :------ | :------- | :---------------------- | :---------------------------------------------------- |
+| labels           | array   | true     | []                      | Names of columns                                      |
+| data             | array   | true     | []                      | Data in rows                                          |
+| language         | boolean | false    | false                   | false = french, true = english                        |
+| firstBackground  | string  | false    | '#5e5d5c'               | Background color of columns and active page           |
+| secondBackground | string  | false    | '#e9e9ed'               | Background color of certains rows and page not active |
+| color            | string  | false    | 'white'                 | Column font color                                     |
+| arrowColor       | string  | false    | '#75797a'               | Arrow's color to sort data                            |
+| customButton     | object  | false    | []                      | to customize the previous and next button             |
+| customColumn     | object  | false    | backgroundColor, color  | to customize the column component                     |
+| customFooter     | object  | false    | []                      | to customize the footer component                     |
+| customHeader     | object  | false    | []                      | to customize the header component                     |
+| customPagination | object  | false    | []                      | to customize the pagination                           |
+| customRow        | object  | false    | backgroundColor, filter | to customize the row component                        |
+| customSearch     | object  | false    | []                      | to customize the search section                       |
+| customArrow      | object  | false    | []                      | to customize arrows to sort data                      |
+| customLength     | object  | false    | []                      | to customize the section of "show length entries"     |
 
 #### Exemple custom
 
