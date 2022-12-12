@@ -10,17 +10,17 @@ import PropTypes from 'prop-types';
  * @param {string} labels.text - the text title of the column
  * @param {string} labels.value - the value of the column
  * @param {Object[]}  data - all data for rows in the table
- * @param {boolean} english - to set the language 
+ * @param {boolean} language - to set the language 
  * @param {string} header - className of the Header
  * @returns { HTMLElement }
  */
-const Header = ({labels, data, english, header}) => {
+const Header = ({labels, data, language, header}) => {
 
 
     return (
         <div className={`dataTable__header ${header}`}>
-            <TableLength data={data} language={english} />
-            <Search labels={labels} data={data} language={english} />
+            <TableLength data={data} language={language} />
+            <Search labels={labels} data={data} language={language} />
         </div>
     );
 };
