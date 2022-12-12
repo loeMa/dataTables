@@ -11,13 +11,13 @@ import PropTypes from 'prop-types';
  * @param {string} labels.value - the value of the column
  * @param {Object[]}  data - all data for rows in the table
  * @param {boolean} language - to set the language 
- * @param {string} header - className of the Header
+ * @param {Object} customHeader - style of the Header
  * @returns { HTMLElement }
  */
-const Header = ({labels, data, language, header}) => {
+const Header = ({labels, data, language, customHeader}) => {
 
     return (
-        <div className={`dataTable__header ${header}`}>
+        <div className={`dataTable__header`} style={customHeader}>
             <TableLength data={data} language={language} />
             <Search labels={labels} data={data} language={language} />
         </div>
@@ -28,7 +28,7 @@ Header.propTypes = {
     labels: PropTypes.array, 
     data: PropTypes.array,
     language: PropTypes.bool,
-    header: PropTypes.string,
+    customHeader: PropTypes.object,
 }
 
 export default Header;

@@ -6,12 +6,12 @@ import PropTypes from 'prop-types'
 /**
  * component to sort datas by click on columns
  * @param {Object[]} label - value of the table'scolumn selected
- * @param {string} arrow - className of the arrow
+ * @param {Object} customArrow - style of the arrow
  * @param {string} color - the color of the font
  * @param {string} arrowColor - the color of arrows of sorting data
  * @returns { HTMLElement }
  */
-const SortData = ({label, arrow, color, arrowColor}) => {
+const SortData = ({label, customArrow, color, arrowColor}) => {
 
     const {store} = useContext(StoreContext)
     const styleArrow = {
@@ -91,7 +91,7 @@ const SortData = ({label, arrow, color, arrowColor}) => {
 
 
     return (
-        <div className={`arrow ${arrow}`} onClick={sortData(label.value)} >
+        <div className={`arrow`} style={customArrow} onClick={sortData(label.value)} >
             <h4>{label.text}</h4>
             <div className='arrow__wrap' >
                 <span className={'arrow__top '+label.value} style={styleArrow} > &#9650;</span>
@@ -106,7 +106,7 @@ SortData.propTypes = {
     label: PropTypes.object, 
     color: PropTypes.string,
     arrowColor: PropTypes.string,
-    arrow: PropTypes.string,
+    customArrow: PropTypes.object,
 }
 
 export default SortData;

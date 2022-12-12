@@ -8,18 +8,18 @@ import PropTypes from 'prop-types';
 /**
  * Footer of the Table
  * @param {boolean} english - to set the language 
- * @param {string} footer - className of the footer
+ * @param {Object} customFooter - style of the footer
  * @param {string} firstBackground - the color of the first background
  * @param {string} secondBackground - the color of the second color
  * @param {string} color - the color of the font
  * @returns { HTMLElement }
  */
-const Footer = ({language, footer, firstBackground, secondBackground, color}) => {
+const Footer = ({language, customFooter, firstBackground, secondBackground, color}) => {
 
     const {store} = useContext(StoreContext)
 
     return (
-        <div className={`dataTable__footer ${footer}`}>
+        <div className={`dataTable__footer`} style={customFooter}>
             <div className='dataTable__footer__entries'>
                 {language? <p>Showing {store.indexStart[0]+1} to {store.indexEnd[0]} of {store.dataArr[0].length} entries</p> 
                 : <p>Affichage de {store.indexStart[0]+1} à {store.indexEnd[0]} sur {store.dataArr[0].length} données</p>
@@ -44,7 +44,7 @@ const Footer = ({language, footer, firstBackground, secondBackground, color}) =>
 
 Footer.propTypes = {
     language: PropTypes.bool,
-    footer: PropTypes.string,
+    customFooter: PropTypes.object,
     firstBackground: PropTypes.string,
     color: PropTypes.string,
     secondBackground: PropTypes.string,

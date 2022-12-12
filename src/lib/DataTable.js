@@ -19,9 +19,10 @@ import Table from './components/Table';
  * @param {string} secondBackground - the color of the second color
  * @param {string} color - the color of the font
  * @param {string} arrowColor - the color of arrows of sorting data
+ * @param {Object} customDataTable-style of the data Table
  * @returns { HTMLElement }
  */
-const DataTable = ({labels, language, data, firstBackground, secondBackground, color, arrowColor}) => {
+const DataTable = ({labels, language, data, firstBackground, secondBackground, color, arrowColor, customDataTable}) => {
 
     const {store} = useContext(StoreContext)
 
@@ -32,7 +33,7 @@ const DataTable = ({labels, language, data, firstBackground, secondBackground, c
     
 
     return (
-        <div className='dataTable__wrapper'>
+        <div className='dataTable__wrapper' style={customDataTable}>
             <Header labels={labels} data={data} language={language? language : false} />
             <Table labels={labels} 
             firstBackground={firstBackground? firstBackground : defaultBackgroundfirst} 
@@ -53,6 +54,7 @@ DataTable.propTypes = {
     secondBackground: PropTypes.string,
     color: PropTypes.string,
     arrowColor: PropTypes.string,
+    customDataTable: PropTypes.object,
 }
 
 export default DataTable;

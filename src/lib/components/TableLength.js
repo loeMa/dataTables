@@ -8,9 +8,10 @@ import PropTypes from 'prop-types'
  * Component to select the number of entries to show
  * @param {Object[]} data - table's data
  * @param {boolean} language - to set the language
+ * @param {Object} customLength - style of the length component
  * @returns { HTMLElement }
  */
-const TableLength = ({data, language}) => {
+const TableLength = ({data, language, customLength}) => {
 
     const {store} = useContext(StoreContext)
 
@@ -24,7 +25,7 @@ const TableLength = ({data, language}) => {
         } 
     
     return (
-        <div>
+        <div style={customLength}>
             
             <label htmlFor="tableLength">{language? "Show " : "Afficher " }
                 <select name='tableLength' onChange={handleChange}>
@@ -41,7 +42,8 @@ const TableLength = ({data, language}) => {
 
 TableLength.propTypes = {
     data: PropTypes.array,
-    language: PropTypes.bool
+    language: PropTypes.bool,
+    customLength: PropTypes.object
 }
 
 export default TableLength;

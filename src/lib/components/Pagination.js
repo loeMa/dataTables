@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 /**
  * Component for the table's pagination 
  * @param {boolean} language - to set the language 
- * @param {string} pagination - className for the pagination 
+ * @param {Object} customPagination - style for the pagination 
  * @param {string} firstBackground - the color of the first background
  * @param {string} secondBackground - the color of the second color
  * @param {string} color - the color of the font
  * @returns { HTMLElement }
  */
-const Pagination = ({language, pagination, firstBackground, secondBackground, color}) => {
+const Pagination = ({language, customPagination, firstBackground, secondBackground, color}) => {
 
     const {store} = useContext(StoreContext)
     const page = store.totalPage[0];
@@ -71,7 +71,7 @@ const Pagination = ({language, pagination, firstBackground, secondBackground, co
         
         
     return (
-        <div className={`pagination ${pagination}`}>
+        <div className={`pagination`} style={customPagination}>
             <div>
         
         { 
@@ -110,7 +110,7 @@ Pagination.propTypes = {
     firstBackground: PropTypes.string,
     color: PropTypes.string,
     secondBackground: PropTypes.string,
-    pagination: PropTypes.string
+    customPagination: PropTypes.object
 }
 
 export default Pagination;
