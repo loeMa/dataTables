@@ -6,11 +6,12 @@ import PropTypes from 'prop-types'
 /**
  * Component to show next or previous list of data
  * @param {Object} customButton - style for the button
+ * @param {string} classname - calassName of previous and next button
  * @param {string} onclick - name of the onclick's function
  * @param {string} title - title of the button
  * @returns { HTMLElement }
  */
-const Arrow = ({customButton, onclick, title}) => {
+const Arrow = ({customButton,classname, onclick, title}) => {
 
     const {store} = useContext(StoreContext);
 
@@ -34,9 +35,9 @@ const Arrow = ({customButton, onclick, title}) => {
     return (
         <div style={customButton}>
             {onclick === nextData.name?
-            <button  onClick={nextData}>{title}</button> 
+            <button className={classname} onClick={nextData}>{title}</button> 
             :
-            <button  onClick={previousData}>{title}</button> 
+            <button className={classname} onClick={previousData}>{title}</button> 
             }  
         </div>
         
@@ -47,7 +48,8 @@ const Arrow = ({customButton, onclick, title}) => {
 Arrow.propTypes = {
     customButton: PropTypes.object, 
     onclick: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    classname: PropTypes.string
 }
 
 export default Arrow;
