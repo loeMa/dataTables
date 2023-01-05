@@ -1,6 +1,6 @@
 # Datable with ReactJS
 
-Datable is a ReactJS library to create a custom and sortable data table. This is the V1 of this project. 
+Datable is a ReactJS library to create a custom and sortable data table. This is the V1 of this project. Not the npmjs version
 
 ![Image](./public/datable.png)
 
